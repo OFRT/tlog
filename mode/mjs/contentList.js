@@ -1,24 +1,40 @@
+var imges = new Array(
+	"/mode/img/img-01.jpg",
+	"/mode/img/img-02.jpg",
+	"/mode/img/img-03.jpg",
+	"/mode/img/img-04.jpg",
+	"/mode/img/img-01.jpg",
+	"/mode/img/img-02.jpg",
+	"/mode/img/img-03.jpg",
+	"/mode/img/img-04.jpg",
+	"/mode/img/img-01.jpg",
+	"/mode/img/img-02.jpg",
+	"/mode/img/img-03.jpg",
+	"/mode/img/img-04.jpg",
+);
+
 jQuery(function($) {
 	$.get(config.content_json, function(contentNodeList) {
 		// 遍历JSON对象
 		Object.keys(contentNodeList).forEach(function(node){
 			if (node != 'end') {
 				if (config.content_mode) {
-					$('#content_list').append(createContentNode(contentNodeList[node]));
+					$('#content_list').append(createContentNode(contentNodeList[node], randomNum(0,11)));
 				} else {
-					$('#content_list').prepend(createContentNode(contentNodeList[node]));
+					$('#content_list').prepend(createContentNode(contentNodeList[node], randomNum(0,11)));
 				}
 			} else {
-				$('#content_list').append(createContentNode(contentNodeList[node], true));
+				$('#content_list').append(createContentNode(contentNodeList[node], randomNum(0,11), true));
 			}
 		});
 	});
 });
 
-function createContentNode(node, mode = false) {
+function createContentNode(node, randomN, mode = false) {
 	var out = '';
 	out += '<div class="tm-timeline-item-inner">';
-	out += '<img src=' + node.img + ' alt="Image" class="rounded-circle tm-img-timeline">'
+	if (node.img) out += '<img src=' + node.img + ' alt="Image" class="rounded-circle tm-img-timeline">';
+	else out += '<img src=' + imges[randomN] + ' alt="Image" class="rounded-circle tm-img-timeline">';
 	out += '<div class="tm-timeline-connector">';
 	out += '<p class="mb-0">&nbsp;</p>';
 	out += '</div>';
@@ -34,3 +50,17 @@ function createContentNode(node, mode = false) {
 	out += '</div>';	
 	return out;
 }
+
+function randomNum(min,max){ 
+    switch(arguments.length){ 
+        case 1: 
+            return Math.floor(Math.random()*minNum+1); 
+        break; 
+        case 2: 
+            return Math.floor(Math.random()*(max-min+1)+min); 
+        break; 
+            default: 
+                return 0; 
+            break; 
+    } 
+} 

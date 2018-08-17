@@ -1,19 +1,19 @@
 {
     "a1": {
         "title": "某时今日",
-        "img": "/mode/img/img-01.jpg",
+        "img": "",
         "content": "闲来无聊做了个小网页玩玩~~",
         "time": ""
     },
 	"a2": {
 		"title": "这是一个模板页面",
-		"img": "/mode/img/img-02.jpg",
+		"img": "",
 		"content": "当前内容是通过静态的JSON文本解析与构建的，计划改下，与后端服务器建立数据请求连接，使内容丰富起来。",
 		"time": ""
 	},
     "end": {
         "title": "最后更新",
-        "img": "/mode/img/img-01.jpg",
+        "img": "",
         "content": "也是闲得发慌的干活~",
         "time": "2018-08-17"
     }
