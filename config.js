@@ -17,7 +17,7 @@ var config = {
 	// content
 	content: true,
 	content_file: 'mode/htm/content/contentList.htm',
-	content_js: 'mode/mjs/contentList.js',
+	content_js: 'mode/mjs/contentList.js?v=0.11',
 	content_json: 'mode/mjs/contentList.json',
 	content_mode: true, // true正序，false倒序
 	// top
@@ -36,18 +36,18 @@ var config = {
 jQuery(function($) {
 	// 修改异步加载为同步加载
 	$.ajaxSettings.async = false;
-	
+
 	// head
 	$.get(config.html_head_file, function(text) {
 		var str = '<head>';
 		str += '<title>' + config.html_title + '</title>';
 		str += text;
-		
+
 		if (config.html_css) str += '<link rel="stylesheet" href="' + config.html_css + '" />';
 		if (config.html_ico) str += '<link rel="shortcut icon" href="' + config.html_ico + '" type="image/x-icon" />';
-		
+
 		str += '</head>';
-		
+
 		document.getElementById('div-head').innerHTML = str;
 	});
 
@@ -74,7 +74,7 @@ jQuery(function($) {
 			document.getElementById('content').innerHTML = text;
 		});
 	}
-	
+
 	// 修改同步加载为异步加载
 	$.ajaxSettings.async = true;
 });
